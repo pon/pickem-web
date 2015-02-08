@@ -55,7 +55,6 @@ gulp.task('styles', function () {
   gulp.src(paths.indexFile)
     .pipe(gulp.dest(paths.dist.root));
 
-    console.log(paths.cssFiles);
   // compile views
   return gulp.src(paths.cssFiles)
     .pipe(gulp.dest(paths.dist.css))
