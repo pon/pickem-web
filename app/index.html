@@ -3,12 +3,15 @@
 <head >
   <title>Pick Em'</title>
   <base href="/">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="css/main.css"/>
 </head>
 
 <body>
   <div id="wrap">
+    <ng-include src="'views/layouts/_nav.html'" ng-cloak></ng-include>
     <div class="container" ui-view ng-cloak></div>
+    <ng-include src="'views/layouts/_footer.html'" ng-cloak></ng-include>
   </div>
   <script src="bower_components/lodash/dist/lodash.min.js"></script>
   <script src="bower_components/angular/angular.min.js"></script>
