@@ -62,6 +62,15 @@ gulp.task('styles', function () {
     .pipe(plugins.connect.reload());
 });
 
+gulp.task('config', function () {
+  return gulp.src('./config/local.json')
+  .pipe(plugins.ngConstant({
+    name: 'pickemConfig'
+  }))
+  .pipe(plugins.rename({basename:'config'}))
+  .pipe(gulp.dest('./dist/js'));
+});
+
 gulp.task('lib', function () {
   gulp.src('./app/bower_components/**/*.css')
   .pipe(plugins.concat('libbundle.css'))
@@ -83,7 +92,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('compile', function () {
-  runSequence('clean', ['browserify', 'views', 'lib', 'styles']);
+  runSequence('clean', ['browserify', 'views', 'lib', 'styles', 'config']);
 });
 
 gulp.task('start', ['compile', 'watch'], function () {
