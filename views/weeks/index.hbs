@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Open Date</th>
+            <th>Close Date</th>
+            <th># Games</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each weeks}}
+            <tr>
+              <td>{{this.name}}</td>
+              <td>{{formatDate this.open_date}}</td>
+              <td>{{formatDate this.close_date}}</td>
+              <td>{{this.games.length}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

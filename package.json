@@ -19,6 +19,7 @@
   "dependencies": {
     "bluebird": "^2.9.7",
     "handlebars": "^2.0.0",
+    "handlebars-intl": "^1.1.1",
     "hapi": "^8.1.0",
     "hapi-auth-cookie": "^2.0.0",
     "joi": "^5.1.0",

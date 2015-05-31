@@ -1,11 +1,15 @@
-var Hapi    = require('hapi');
+var Handlebars      = require('handlebars');
+var HandlebarsIntl  = require('handlebars-intl');
+var Hapi            = require('hapi');
+
+HandlebarsIntl.registerWith(Handlebars);
 
 var server = new Hapi.Server();
 server.connection({ port: 4000 });
 
 server.views({
   engines: {
-    hbs: require('handlebars')
+    hbs: Handlebars
   },
   path: './views',
   layoutPath: './views/layouts',
@@ -14,8 +18,9 @@ server.views({
 });
 
 server.register([
-  { register: require('./plugins/services/apiWrapper') },
-  { register: require('./plugins/services/authentication') }
+  { register: require('./services/apiWrapper') },
+  { register: require('./services/authentication') },
+  { register: require('./features/weeks') }
 ], function (err) {
   if (err) throw err;
 });
