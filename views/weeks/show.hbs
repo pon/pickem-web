@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form method="POST" action="/weeks/{{week.id}}">
+        <div class="form">
+          <div class="form-group">
+            <label class="control-label">Name</label>
+            <input type="text" name="name" class="form-control" value="{{week.name}}">
+          </div>
+
+          <div class="form-group">
+            <label class="control-label">Open Date</label>
+            <input type="date" name="open_date" class="form-control" value="{{formatDateShort week.open_date}}">
+          </div>
+
+          <div class="form-group">
+            <label class="control-label">Close Date</label>
+            <input type="date" name="close_date" class="form-control" value="{{formatDateShort week.close_date}}">
+          </div>
+        </div>
+        <h2>Games</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Home Team</th>
+              <th>Away Team</th>
+              <th>Neutral Site</th>
+              <th>Site</th>
+              <th>Start Time</th>
+              <th>Spread</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each week.games}}
+              <tr>
+                <td>{{showTeam this.home_team}}</td>
+                <td>{{showTeam this.away_team}}</td>
+                <td>{{yesNo this.neutral_site}}</td>
+                <td>{{this.site}}</td>
+                <td>{{formatDateLong this.start_time}}</td>
+                <td>{{this.spread}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,5 @@
+var moment = require('moment');
+
 exports.register = function (server, options, next) {
 
   var api = server.plugins.apiWrapper.makeRequest;
@@ -18,8 +20,25 @@ exports.register = function (server, options, next) {
             week.close_date = new Date(week.close_date);
             return week;
           });
-          return reply.view('weeks/index', {
+          reply.view('weeks/index', {
             weeks: weeks
+          });
+        });
+      }
+    }
+  }, {
+    method: 'GET',
+    path: '/weeks/{id}',
+    config: {
+      handler: function (request, reply) {
+        return api({
+          method: 'GET',
+          url: '/weeks/' + request.params.id,
+          token: request.auth.credentials.token
+        })
+        .then(function (week) {
+          reply.view('weeks/show', {
+            week: week
           });
         });
       }
@@ -29,7 +48,7 @@ exports.register = function (server, options, next) {
     path: '/weeks/new',
     config: {
       handler: function (request, reply) {
-        return reply.view('weeks/new');
+        reply.view('weeks/new');
       }
     }
   }]);

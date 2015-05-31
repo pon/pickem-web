@@ -23,6 +23,7 @@
     "hapi": "^8.1.0",
     "hapi-auth-cookie": "^2.0.0",
     "joi": "^5.1.0",
+    "moment": "^2.10.3",
     "request": "^2.53.0"
   },
   "devDependencies": {
